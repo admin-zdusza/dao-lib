@@ -162,7 +162,8 @@ public class DaoTest {
                     .handle(Future.succeededFuture(sqlConnection));
             return null;
         }).when(sqlClient).getConnection(Mockito.any());
-        Mockito.doThrow(TEST_EXCEPTION_1).when(sqlConnection).setAutoCommit(ArgumentMatchers.eq(false), Mockito.any());
+        Mockito.doThrow(TEST_EXCEPTION_1)
+                .when(sqlConnection).setAutoCommit(ArgumentMatchers.eq(false), Mockito.any());
         Mockito.doAnswer(invocation -> {
             invocation.<Handler<AsyncResult<SQLConnection>>>getArgument(0)
                     .handle(Future.succeededFuture());
@@ -618,6 +619,7 @@ public class DaoTest {
         };
     }
 
+    //TODO:
     @Test
     public final void testShouldDoInTryCatchHandlerSucceed(final TestContext tc) {
         Async async = tc.async();
