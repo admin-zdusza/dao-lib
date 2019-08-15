@@ -619,7 +619,6 @@ public class DaoTest {
         };
     }
 
-    //TODO:
     @Test
     public final void testShouldDoInTryCatchHandlerSucceed(final TestContext tc) {
         Async async = tc.async();
