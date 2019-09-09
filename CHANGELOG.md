@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.1.0] - 2019-09-09
+### Changed
+- Dao lib version.
+
 ## [3.0.0] - 2019-08-31
 ### Changed
 - Dao lib version.
