@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.zdusza</groupId>
     <artifactId>dao-lib</artifactId>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
 
@@ -233,7 +233,7 @@
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
             <releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
             <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
         </repository>
