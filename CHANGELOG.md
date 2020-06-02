@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1.0] - 2020-06-02
+### Changed
+- Domain lib version.
+
 ## [6.0.0] - 2020-05-04
 ### Changed
 - Domain lib version.

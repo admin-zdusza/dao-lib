@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.zdusza</groupId>
     <artifactId>dao-lib</artifactId>
-    <version>6.0.0</version>
+    <version>6.1.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>10</java.version>
-        <domain-lib.version>6.0.0</domain-lib.version>
+        <domain-lib.version>6.1.0</domain-lib.version>
         <vertx.version>3.5.4</vertx.version>
         <commons.version>1.6</commons.version>
         <postgresql.version>42.2.5</postgresql.version>
