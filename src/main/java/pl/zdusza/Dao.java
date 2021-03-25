@@ -3,11 +3,13 @@ package pl.zdusza;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
+import io.vertx.core.json.JsonArray;
 import io.vertx.ext.sql.SQLClient;
 import io.vertx.ext.sql.SQLConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 public class Dao {
@@ -185,17 +187,34 @@ public class Dao {
         return future;
     }
 
-    public final <T1, T2> Handler<AsyncResult<T1>> doInTryCatch(final Handler<T1> handler, final Future<T2> future) {
+    private <T1, T2> Handler<AsyncResult<T1>> doInTryCatch(final Handler<T1> handler,
+                                                           final Future<T2> future,
+                                                           final Optional<String> query,
+                                                           final Optional<JsonArray> queryParams) {
         return asyncCall -> {
             if (asyncCall.succeeded()) {
                 try {
                     handler.handle(asyncCall.result());
                 } catch (Throwable t) {
+                    query.ifPresent(q ->
+                            LOGGER.error("Query: {} failed for params: {}", q, queryParams.get().toString()));
                     future.fail(t);
                 }
             } else {
+                query.ifPresent(q -> LOGGER.error("Query: {} failed for params: {}", q, queryParams.get().toString()));
                 future.fail(asyncCall.cause());
             }
         };
+    }
+
+    public final <T1, T2> Handler<AsyncResult<T1>> doInTryCatch(final Handler<T1> handler, final Future<T2> future) {
+        return doInTryCatch(handler, future, Optional.empty(), Optional.empty());
+    }
+
+    public final <T1, T2> Handler<AsyncResult<T1>> doInTryCatch(final Handler<T1> handler,
+                                                                final Future<T2> future,
+                                                                final String query,
+                                                                final JsonArray queryParams) {
+        return doInTryCatch(handler, future, Optional.of(query), Optional.of(queryParams));
     }
 }

@@ -3,6 +3,7 @@ package pl.zdusza;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
+import io.vertx.core.json.JsonArray;
 import io.vertx.ext.sql.SQLClient;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.unit.Async;
@@ -649,6 +650,15 @@ public class DaoTest {
         Async async = tc.async();
         Future<String> future = Future.future();
         dao.<String, String>doInTryCatch(future::complete, future)
+                .handle(Future.failedFuture(TEST_EXCEPTION_1));
+        future.setHandler(verifyHandleDoInTryCatchFailure(tc, async));
+    }
+
+    @Test
+    public final void testShouldDoInTryCatchWithQueryParamsHandlerFutureFailWhenHandlerFails(final TestContext tc) {
+        Async async = tc.async();
+        Future<String> future = Future.future();
+        dao.<String, String>doInTryCatch(future::complete, future, "query", new JsonArray().add(2).add("Test"))
                 .handle(Future.failedFuture(TEST_EXCEPTION_1));
         future.setHandler(verifyHandleDoInTryCatchFailure(tc, async));
     }
