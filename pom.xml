@@ -14,7 +14,7 @@
         <domain-lib.version>7.1.0</domain-lib.version>
         <vertx.version>3.5.4</vertx.version>
         <commons.version>1.6</commons.version>
-        <postgresql.version>42.2.5</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
         <flyway.version>5.2.4</flyway.version>
         <scala.lang.version>2.12.4</scala.lang.version>
         <slf4j.version>1.7.25</slf4j.version>
